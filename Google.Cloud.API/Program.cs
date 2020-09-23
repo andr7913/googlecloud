@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace GoogleCloud.API
+namespace Google.Cloud.API
 {
     public class Program
     {

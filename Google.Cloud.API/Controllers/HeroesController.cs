@@ -4,18 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Heroes.Core.ApplicationService;
 using Heroes.Entity;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace GoogleCloud.API.Controllers
+namespace Google.Cloud.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class HeroesController : ControllerBase
+    public class HeroesController : Controller
     {
-
-        private readonly IHeroService _heroService;
+         private readonly IHeroService _heroService;
         public HeroesController(IHeroService heroService)
         {
             _heroService = heroService;
@@ -77,13 +75,12 @@ namespace GoogleCloud.API.Controllers
         public ActionResult<Hero> Delete(int id)
         {
             var hero = _heroService.DeleteHero(id);
-            if (hero == null)
+            if(hero == null)
             {
                 return StatusCode(404, "Did not find any Hero with Id" + id);
             }
 
             return NoContent();
         }
-
     }
 }
